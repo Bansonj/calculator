@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <h2>Calculator</h2>
+        <form>
+            <input type="text" name="" id="" class="screen">
+        </form>
+
+        <div class="buttons">
+
+            <!-- Symbols -->
+            <button type="button" class="btn btn-1" data-num="*">*</button>
+            <button type="button" class="btn btn-1" data-num="/">/</button>
+            <button type="button" class="btn btn-1" data-num="-">-</button>
+            <button type="button" class="btn btn-1" data-num="+">+</button>
+
+            <!-- Numbers -->
+            <button type="button" class="btn btn-2" data-num=".">.</button>
+            <button type="button" class="btn btn-2" data-num="9">9</button>
+            <button type="button" class="btn btn-2" data-num="8">8</button>
+            <button type="button" class="btn btn-2" data-num="7">7</button>
+            <button type="button" class="btn btn-2" data-num="6">6</button>
+            <button type="button" class="btn btn-2" data-num="5">5</button>
+            <button type="button" class="btn btn-2" data-num="4">4</button>
+            <button type="button" class="btn btn-2" data-num="3">3</button>
+            <button type="button" class="btn btn-2" data-num="2">2</button>
+            <button type="button" class="btn btn-2" data-num="1">1</button>
+            <button type="button" class="btn btn-2" data-num="0">0</button>
+
+            <!--  -->
+            <button type="button" class="btn-equal btn-2">=</button>
+            <button type="button" class="btn-clear btn-2">C</button>
+
+        </div><!-- buttons -->
+    </div>
+
+
+
+
+    <script>
+        const btns = document.querySelectorAll('.btn');
+        const screen = document.querySelector('.screen');
+        const eqaulBtn = document.querySelector('.btn-equal');
+        const clearBtn = document.querySelector('.btn-clear');
+
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', () => {
+                let number = btns[i].getAttribute('data-num');
+
+                screen.value += number;
+            })
+        }
+
+        //check if screen is empty
+        if (screen.value === '') {
+            alert('Enter a number');
+        } else {
+            eqaulBtn.addEventListener('click', () => {
+                let value = eval(screen.value);
+                screen.value = value;
+            });
+        }
+
+        clearBtn.addEventListener('click', () => {
+            screen.value = '';
+        });
+
+    </script>
+</body>
+
+</html>
